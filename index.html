@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>SizeEverything — админка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>⚡ JAR Size Data · админ-панель</h1>
+
+    <div class="auth-bar">
+        <span id="user-role">👁️ читатель (без входа)</span>
+        <input type="text" id="login-input" placeholder="логин">
+        <input type="password" id="pass-input" placeholder="пароль">
+        <button onclick="login()">войти как admin</button>
+        <button onclick="logout()" id="logout-btn" style="display:none;">выход</button>
+    </div>
+
+    <div id="categories"></div>
+
+    <div id="admin-panel" style="display:none;">
+        <button onclick="newCategory()" class="admin-btn">➕ новая категория</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
