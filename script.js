@@ -82,82 +82,117 @@ const defaultData = {
         ]
     },
     autoreconnect: {
-        name: '🔄 Auto Reconnect',
+        name: '🔄 Auto Reconnect | 17 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "17kb"
+            ".jar utf8content:me/goodman/reconnect/addon.class"
         ]
     },
     viewmodel: {
-        name: '👁️ View Model',
+        name: '👁️ View Model | 65 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "65kb"
+            ".jar utf8content:c3sss3"
         ]
     },
     creativecore: {
-        name: '🎨 CreativeCore',
+        name: '🎨 CreativeCore | 401 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "401kb"
+            ".jar utf8content:team/creative/creativecore/render/"
         ]
     },
     perspective: {
-        name: '🔄 Perspective Mod',
+        name: '🔄 Perspective Mod | 93 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "93kb"
+            ".jar utf8content:pm/c7/pmr/attribute/attributeloader.class"
         ]
     },
     optifile: {
-        name: '⚡ OptiFile',
+        name: '⚡ OptiFile | 4959 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "4959kb"
+            "size:5077783 .jar utf8content:va!e[v="
         ]
     },
     size11740: {
-        name: '📁 11740kb',
+        name: '📁 11740 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "11740kb"
+            ".jar utf8content:kc_03u&jepa"
         ]
     },
     lwjgl: {
-        name: '🔧 lwjgI32.dll',
+        name: '🔧 lwjgI32.dll | 26087 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "26087kb"
+            "size:25mb-30mb utf8content:_#x_x"
         ]
     },
     bgn: {
-        name: '📄 bgn.class',
+        name: '📄 bgn.class | By JmcMODS',
         suffix: '',
         items: [
-            "bgn.class"
+            ".class utf8content:(lbrx;lbmb;laqm;)lbga;"
         ]
     },
     anapa: {
-        name: '🌴 Anapa',
+        name: '🌴 Anapa | By JmcMODS',
         suffix: '',
         items: [
-            "Anapa"
+            "size:8mb-10mb utf8content:wlproj"
         ]
     },
     cscheat: {
-        name: '💉 cscheat.dll',
+        name: '💉 cscheat.dll | 1526 КБ | By JmcMODS',
         suffix: '',
         items: [
-            "1526kb"
+            "size:1500kb-1600kb utf8content:entityraytraceresult"
         ]
     },
     sound: {
-        name: '🎵 Sound.mp3',
+        name: '🎵 Sound.mp3 | By JmcMODS',
         suffix: '',
         items: [
-            "Sound.mp3"
+            "size:20mb-25mb utf8content:{5}#"
         ]
-    }
+    },
+    dll: {
+        name:'👻 Nixploit .dll | By JmcMODS',
+        suffix: '',
+        items: [
+            ".dll size:10kb-35013kb utf8content:"hmm8_vfp>@f""
+        ]
+    },
+    njar: {
+        name:'👻 Nixploit .jar | By JmcMODS',
+        suffix: '',
+        items: [
+            ".jar size:3kb-4kb utf8content:"s9==]""
+        ]
+    },
+    txt: {
+        name:'👻 Nixploit .txt | By JmcMODS',
+        suffix: '',
+        items: [
+            ".txt size:3kb-100kb utf8content:"s.close()""
+        ]
+    },
+    exe: {
+        name:'👻 Nixploit .exe | By JmcMODS',
+        suffix: '',
+        items: [
+            ".exe size:11kb-35013kb utf8content:"yaxpebd@z?""
+        ]
+    },
+    holyworld: {
+        name: '🗒️ Size in HolyWorld',
+        suffix: '',
+        items: [
+            "ext:.exe;.jar;.zip;.rar regex:(impact|wurst|bleach[-_]?hack|aristois|huzuni|skill[-_]?client|nodus|inertia|ares|sigma|meteor|BetterHitReg|atomic|zamorozka|liquid[-_]?bounce|nurik|nursultan|celestial|calestial|celka|expensive|neverhook|excellent|wexside|wild|minced|deadcode|akrien|future|dreampool|vape|infinity|squad|no[-_]?rules|konas|zeus[-_]?client|rich[-_]?client|ghost[-_]?client|rusher[-_]?hack|thunder[-_]?hack|moon[-_]?hack|winner|nova|exire|doomsday|nightware|ricardo|extazyy|troxill|arbuz|dauntiblyat|rename[-_]?me[-_]?please|edit[-_]?me|takker|faker|xameleon|fuze[-_]?client|wise[-_]?folder|net[-_]?limiter|feather|delta|eclipse|venus|jex|hakari|hush|hach|rogalik|catlavan|haruka|wissend|fluger|sperma|vortex|newcode|astra|britva|bariton|bot|player|freecam|bedrock|hotbar|swap|chest|gumball|tweak|entity|crystal|lowdurabilityswitcher|optimizer|viabackwards|viaforge|viaproxy|hitbox|elytra|through|mob|auto|place|health|inventory|x[-_]?ray|clean[-_]?cut|smart[-_]?moving|save[-_]?searcher|world[-_]?downloader|trade[-_]?finder|chorus[-_]?find|inv[-_]?move|chunk[-_]?copy|seed[-_]?cracker|diamond[-_]?sim|forge[-_]?hax|step[-_]?up|client[-_]?commands|camera[-_]?utils|cheat[-_]?utils|universal[-_]?mod|swing[-_]?through[-_]?grass)"
+        ]
+    },
 };
 
 // Загрузка из localStorage или использование дефолтных
