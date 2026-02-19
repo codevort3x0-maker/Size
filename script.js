@@ -158,41 +158,41 @@ const defaultData = {
             "size:20mb-25mb utf8content:{5}#"
         ]
     },
-    dll: {
+    nixploit_dll: {
         name:'👻 Nixploit .dll | By JmcMODS',
         suffix: '',
         items: [
-            ".dll size:10kb-35013kb utf8content:"hmm8_vfp>@f""
+            '.dll size:10kb-35013kb utf8content:"hmm8_vfp>@f"'
         ]
     },
-    njar: {
+    nixploit_jar: {
         name:'👻 Nixploit .jar | By JmcMODS',
         suffix: '',
         items: [
-            ".jar size:3kb-4kb utf8content:"s9==]""
+            '.jar size:3kb-4kb utf8content:"s9==]"'
         ]
     },
-    txt: {
+    nixploit_txt: {
         name:'👻 Nixploit .txt | By JmcMODS',
         suffix: '',
         items: [
-            ".txt size:3kb-100kb utf8content:"s.close()""
+            '.txt size:3kb-100kb utf8content:"s.close()"'
         ]
     },
-    exe: {
+    nixploit_exe: {
         name:'👻 Nixploit .exe | By JmcMODS',
         suffix: '',
         items: [
-            ".exe size:11kb-35013kb utf8content:"yaxpebd@z?""
+            '.exe size:11kb-35013kb utf8content:"yaxpebd@z?"'
         ]
     },
     holyworld: {
         name: '🗒️ Size in HolyWorld',
         suffix: '',
         items: [
-            "ext:.exe;.jar;.zip;.rar regex:(impact|wurst|bleach[-_]?hack|aristois|huzuni|skill[-_]?client|nodus|inertia|ares|sigma|meteor|BetterHitReg|atomic|zamorozka|liquid[-_]?bounce|nurik|nursultan|celestial|calestial|celka|expensive|neverhook|excellent|wexside|wild|minced|deadcode|akrien|future|dreampool|vape|infinity|squad|no[-_]?rules|konas|zeus[-_]?client|rich[-_]?client|ghost[-_]?client|rusher[-_]?hack|thunder[-_]?hack|moon[-_]?hack|winner|nova|exire|doomsday|nightware|ricardo|extazyy|troxill|arbuz|dauntiblyat|rename[-_]?me[-_]?please|edit[-_]?me|takker|faker|xameleon|fuze[-_]?client|wise[-_]?folder|net[-_]?limiter|feather|delta|eclipse|venus|jex|hakari|hush|hach|rogalik|catlavan|haruka|wissend|fluger|sperma|vortex|newcode|astra|britva|bariton|bot|player|freecam|bedrock|hotbar|swap|chest|gumball|tweak|entity|crystal|lowdurabilityswitcher|optimizer|viabackwards|viaforge|viaproxy|hitbox|elytra|through|mob|auto|place|health|inventory|x[-_]?ray|clean[-_]?cut|smart[-_]?moving|save[-_]?searcher|world[-_]?downloader|trade[-_]?finder|chorus[-_]?find|inv[-_]?move|chunk[-_]?copy|seed[-_]?cracker|diamond[-_]?sim|forge[-_]?hax|step[-_]?up|client[-_]?commands|camera[-_]?utils|cheat[-_]?utils|universal[-_]?mod|swing[-_]?through[-_]?grass)"
+            'ext:.exe;.jar;.zip;.rar regex:(impact|wurst|bleach[-_]?hack|aristois|huzuni|skill[-_]?client|nodus|inertia|ares|sigma|meteor|BetterHitReg|atomic|zamorozka|liquid[-_]?bounce|nurik|nursultan|celestial|calestial|celka|expensive|neverhook|excellent|wexside|wild|minced|deadcode|akrien|future|dreampool|vape|infinity|squad|no[-_]?rules|konas|zeus[-_]?client|rich[-_]?client|ghost[-_]?client|rusher[-_]?hack|thunder[-_]?hack|moon[-_]?hack|winner|nova|exire|doomsday|nightware|ricardo|extazyy|troxill|arbuz|dauntiblyat|rename[-_]?me[-_]?please|edit[-_]?me|takker|faker|xameleon|fuze[-_]?client|wise[-_]?folder|net[-_]?limiter|feather|delta|eclipse|venus|jex|hakari|hush|hach|rogalik|catlavan|haruka|wissend|fluger|sperma|vortex|newcode|astra|britva|bariton|bot|player|freecam|bedrock|hotbar|swap|chest|gumball|tweak|entity|crystal|lowdurabilityswitcher|optimizer|viabackwards|viaforge|viaproxy|hitbox|elytra|through|mob|auto|place|health|inventory|x[-_]?ray|clean[-_]?cut|smart[-_]?moving|save[-_]?searcher|world[-_]?downloader|trade[-_]?finder|chorus[-_]?find|inv[-_]?move|chunk[-_]?copy|seed[-_]?cracker|diamond[-_]?sim|forge[-_]?hax|step[-_]?up|client[-_]?commands|camera[-_]?utils|cheat[-_]?utils|universal[-_]?mod|swing[-_]?through[-_]?grass)'
         ]
-    },
+    }
 };
 
 // Загрузка из localStorage или использование дефолтных
@@ -214,7 +214,8 @@ function saveData() {
     localStorage.setItem('sizeCategories', JSON.stringify(categories));
 }
 
-categories = JSON.parse(JSON.stringify(defaultData));
+// Загружаем данные при старте
+loadData();
 
 function render() {
     const container = document.getElementById('categories');
@@ -285,19 +286,16 @@ window.addItem = function(key) {
     let value = input.value.trim();
     if (!value) return;
     
-    // Авто-добавление size: для цифр
-    if ((key === 'jar' || key === 'weight') && /^\d+$/.test(value) && !value.startsWith('size:')) {
-        value = 'size:' + value;
-    }
-    
     categories[key].items.push(value);
     render();
+    saveData();
 };
 
 // Удаление элемента (админ)
 window.deleteItem = function(key, index) {
     categories[key].items.splice(index, 1);
     render();
+    saveData();
 };
 
 // Новая категория (админ)
@@ -312,17 +310,21 @@ window.newCategory = function() {
         items: []
     };
     render();
+    saveData();
 };
 
 // Удаление категории (админ)
 window.deleteCategory = function(key) {
-    if (key === 'jar' || key === 'weight' || key === 'name' || key === 'vec' || key === 'doomsday' || key === 'exe') {
+    const baseCategories = ['jar', 'weight', 'name', 'vec', 'exe', 'doomsday', 'autoreconnect', 'viewmodel', 'creativecore', 'perspective', 'optifile', 'size11740', 'lwjgl', 'bgn', 'anapa', 'cscheat', 'sound', 'nixploit_dll', 'nixploit_jar', 'nixploit_txt', 'nixploit_exe', 'holyworld'];
+    
+    if (baseCategories.includes(key)) {
         alert('❌ базовые категории нельзя удалить');
         return;
     }
     if (confirm(`Удалить категорию "${categories[key].name}"?`)) {
         delete categories[key];
         render();
+        saveData();
     }
 };
 
@@ -353,4 +355,7 @@ window.logout = function() {
 };
 
 // Старт
-window.onload = render;
+window.onload = function() {
+    loadData();
+    render();
+};
