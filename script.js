@@ -160,7 +160,6 @@ const defaultData = {
     }
 };
 
-// Загрузка из localStorage или использование дефолтных
 function loadData() {
     const saved = localStorage.getItem('sizeCategories');
     if (saved) {
@@ -179,11 +178,64 @@ function saveData() {
     localStorage.setItem('sizeCategories', JSON.stringify(categories));
 }
 
+// Сохранение в файл
+window.saveToFile = function() {
+    const dataStr = JSON.stringify(categories, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `sizes-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    
+    URL.revokeObjectURL(url);
+};
+
+// Загрузка из файла
+window.loadFromFile = function() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    
+    input.onchange = function(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            try {
+                const loaded = JSON.parse(e.target.result);
+                categories = loaded;
+                saveData(); // сохраняем в localStorage
+                render();
+                alert('✅ Категории загружены из файла');
+            } catch (err) {
+                alert('❌ Ошибка загрузки файла: ' + err);
+            }
+        };
+        
+        reader.readAsText(file);
+    };
+    
+    input.click();
+};
+
+// Сброс к дефолтным
+window.resetToDefault = function() {
+    if (confirm('Сбросить все категории к исходным? Все изменения будут потеряны.')) {
+        categories = JSON.parse(JSON.stringify(defaultData));
+        saveData();
+        render();
+    }
+};
+
 // Загружаем данные при старте
 loadData();
 
 function render() {
     const container = document.getElementById('categories');
+    if (!container) return;
+    
     container.innerHTML = '';
     
     for (let [key, cat] of Object.entries(categories)) {
