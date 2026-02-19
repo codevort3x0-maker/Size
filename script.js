@@ -203,14 +203,14 @@ window.login = function() {
     const login = document.getElementById('login-input').value;
     const pass = document.getElementById('pass-input').value;
     
-    if (login === 'admin' && pass === 'admin123') {
+    if (login === 'CodeV0rtex' && pass === '21emanoN74859474()') {
         isAdmin = true;
         document.getElementById('user-role').innerHTML = '👑 Admin';
         document.getElementById('admin-panel').style.display = 'block';
         document.getElementById('logout-btn').style.display = 'inline-block';
         render();
     } else {
-        alert('❌ неверный логин/пароль (admin/admin123)');
+        alert('❌ Неверный логин/пароль');
     }
 };
 
