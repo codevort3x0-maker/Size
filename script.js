@@ -241,9 +241,7 @@ window.copyCategory = function(key) {
     let text = cat.items.join('|');
     if (cat.suffix) text += cat.suffix;
     
-    navigator.clipboard.writeText(text).then(() => {
-        alert(`✅ скопировано ${cat.items.length} элементов`);
-    });
+    navigator.clipboard.writeText(text);
 };
 
 // Добавление элемента (админ)
@@ -305,13 +303,13 @@ window.login = function() {
         document.getElementById('logout-btn').style.display = 'inline-block';
         render();
     } else {
-        alert('❌ неверный логин/пароль (admin/admin123)');
+        alert('❌ Неверный логин/пароль');
     }
 };
 
 window.logout = function() {
     isAdmin = false;
-    document.getElementById('user-role').innerHTML = '👁️ читатель (без входа)';
+    document.getElementById('user-role').innerHTML = '👁️ Читатель';
     document.getElementById('admin-panel').style.display = 'none';
     document.getElementById('logout-btn').style.display = 'none';
     document.getElementById('login-input').value = '';
